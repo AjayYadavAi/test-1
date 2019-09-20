@@ -1,24 +1,13 @@
 @extends('layouts.sidebar')
-
 @section('content')
-<style type="text/css">
-  .card_body{
-    float: left;
-    padding: 50px;
-    border: 1px solid grey;
-    border-radius: 6px;
-    color: white;
-    background: #585a5d;
-    margin: 5px;
-  }
-</style>
+
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-        <form method="POST" action="{{ route('category.store') }}">
+        <form method="POST" action="{{ route('lession.store') }}">
           @csrf
           <div class="input-group mb-3">
-            <input type="text" name="category_name" class="form-control" placeholder="New Category">
+            <input type="text" name="lession_name" class="form-control" placeholder="New Lession....">
             <div class="input-group-append">
               <button class="input-group-text" type="submit">ADD</button>
             </div>
@@ -27,6 +16,7 @@
     </div>
     <div class="col-sm-3"></div>
 </div>
+
 
 <div class="card_section">
    @foreach($data as $d)
@@ -39,7 +29,7 @@
     margin: 5px;
     text-decoration: none;
     ">
-      {{ $d->category_name }}      
+      {{ $d->lession_name }}      
     </a>
   @endforeach
 </div>

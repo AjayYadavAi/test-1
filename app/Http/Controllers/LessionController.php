@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Lession;
 use Illuminate\Http\Request;
-use Session;
-
-class CategoryController extends Controller
+use App\Lession;
+class LessionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
-        return view('category.index',['data'=>$data]);
+        //
     }
 
     /**
@@ -38,47 +34,47 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
-            'category_name' => 'required|unique:categories|max:55',
+            'lesssion_name' => 'required|unique:categories|max:55',
         ]);
-        $category = new Category();
-        $category->category_name = $request->category_name;
-        $category->save();
-        return redirect('category')->with('message', 'Category Added!');
+        $lession = new Lession();
+        $
+        $lession->lession_name = $request->lession_name;
+        $lession->save();
+        return redirect('category.lession')->with('message', 'Lession Added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+       
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         //
-        $data = Lession::where('cat_id',$category->id)->get();
-        return view('category.lession',['data'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -86,10 +82,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
     }
